@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tarea en clases</title>
+</head>
+<body>
+    <h1>Tarea en clases "llamar a una pagina utilizando la funcion Async"</h1>
+    <p id="demo"></p>
+
+    <script type="text/javascript">
+        
+        async function useAsync(){
+            let promesa=new Promise(function(resolve){
+                let req=new XMLHttpRequest();
+                
+                req.open('GET','paralatarea.html');
+                req.onload=function(){
+                    if(req.status==200){
+                        resolve(req.response);
+                    }else{
+                        resolve("ups!!! Página no encontrada");
+                    }
+                };
+                req.send();
+            });
+            document.getElementById('demo').innerHTML=await promesa;
+        }
+        useAsync();
+    </script>
+</body>
+</html>
